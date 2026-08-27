@@ -27,12 +27,15 @@ TEXTS = {
             "🎉 تم تفعيل تجربتك المجانية لمدة {days} أيام بنجاح!\n\n"
             "🔗 رابط الانضمام للقناة (استخدام واحد فقط):\n{invite_link}"
         ),
-        "payment_instructions": (
+        "payment_intro": (
             "💰 قيمة الاشتراك: <b>${price}</b>\n\n"
-            "يمكنك الدفع عبر أي من الطرق التالية (اضغط مطولاً على أي عنوان لتحديده ونسخه):\n\n"
-            "🔸 USDT (TRC20):\n<pre><code class=\"language-text\">{trc20_wallet}</code></pre>\n\n"
-            "🔸 USDT (BEP20):\n<pre><code class=\"language-text\">{bsc_wallet}</code></pre>\n\n"
-            "🔸 تحويل داخلي عبر Binance UID:\n<pre><code class=\"language-text\">{binance_uid}</code></pre>\n\n"
+            "راح أرسل لك عناوين الدفع في رسائل منفصلة كنص عادي حتى تقدر تحدد العنوان "
+            "وتنسخه بسهولة (اضغط مطولاً على النص)."
+        ),
+        "wallet_label_trc20": "🔸 USDT (TRC20):",
+        "wallet_label_bep20": "🔸 USDT (BEP20):",
+        "wallet_label_binance": "🔸 تحويل داخلي عبر Binance UID:",
+        "payment_footer": (
             "⚠️ <b>تنبيه مهم:</b> تأكد تمامًا من اختيار الشبكة الصحيحة (TRC20 أو BEP20) قبل "
             "إرسال التحويل من محفظتك أو منصتك. إرسال الأموال عبر شبكة خاطئة قد يؤدي لخسارتها "
             "بشكل نهائي ولا يمكن استرجاعها أبدًا.\n\n"
@@ -91,12 +94,15 @@ TEXTS = {
             "🎉 Your {days}-day free trial has been activated!\n\n"
             "🔗 Channel invite link (single use):\n{invite_link}"
         ),
-        "payment_instructions": (
+        "payment_intro": (
             "💰 Plan price: <b>${price}</b>\n\n"
-            "You can pay using any of the following methods (press and hold any address to select and copy it):\n\n"
-            "🔸 USDT (TRC20):\n<pre><code class=\"language-text\">{trc20_wallet}</code></pre>\n\n"
-            "🔸 USDT (BEP20):\n<pre><code class=\"language-text\">{bsc_wallet}</code></pre>\n\n"
-            "🔸 Internal Binance transfer (UID):\n<pre><code class=\"language-text\">{binance_uid}</code></pre>\n\n"
+            "I'll send you the payment addresses in separate plain-text messages so you can "
+            "select and copy each one easily (press and hold the text)."
+        ),
+        "wallet_label_trc20": "🔸 USDT (TRC20):",
+        "wallet_label_bep20": "🔸 USDT (BEP20):",
+        "wallet_label_binance": "🔸 Internal Binance transfer (UID):",
+        "payment_footer": (
             "⚠️ <b>Important:</b> Make sure you select the correct network (TRC20 or BEP20) "
             "before sending the transfer from your wallet or exchange. Sending funds on the "
             "wrong network can result in permanent, unrecoverable loss.\n\n"

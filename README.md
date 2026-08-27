@@ -91,6 +91,7 @@ cp .env.example .env
 | `TRIAL_DAYS` | مدة التجربة المجانية بالأيام |
 | `PAYMENT_AMOUNT_TOLERANCE` | هامش السماح عند مطابقة المبلغ المحوّل بالدولار |
 | `SCHEDULER_INTERVAL_SECONDS` | فترة فحص الاشتراكات المنتهية بالثواني |
+| `SUPPORT_USERNAME` | معرف تيليجرام (بدون @) اللي يفتح عليه زر "الدعم" |
 
 ### 4. تجهيز البوت في BotFather
 

@@ -62,12 +62,25 @@ async def plan_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
 
     database.set_pending_plan(query.from_user.id, plan)
     price = config.PLAN_PRICES[plan]
+
     await query.edit_message_text(
-        t["payment_instructions"].format(
-            price=price,
-            trc20_wallet=config.TRC20_WALLET,
-            bsc_wallet=config.BSC_WALLET,
-            binance_uid=config.BINANCE_UID,
-        ),
+        t["payment_intro"].format(price=price),
+        parse_mode="HTML",
+    )
+
+    chat_id = query.from_user.id
+    for label_key, wallet_value in (
+        ("wallet_label_trc20", config.TRC20_WALLET),
+        ("wallet_label_bep20", config.BSC_WALLET),
+        ("wallet_label_binance", config.BINANCE_UID),
+    ):
+        await context.bot.send_message(
+            chat_id=chat_id,
+            text=f"{t[label_key]}\n{wallet_value}",
+        )
+
+    await context.bot.send_message(
+        chat_id=chat_id,
+        text=t["payment_footer"],
         parse_mode="HTML",
     )

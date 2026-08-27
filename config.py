@@ -41,6 +41,8 @@ PLAN_DURATIONS_DAYS = {
 
 SCHEDULER_INTERVAL_SECONDS = int(os.getenv("SCHEDULER_INTERVAL_SECONDS", str(60 * 60)))
 
+SUPPORT_USERNAME = os.getenv("SUPPORT_USERNAME", "oonyxa_Support3")
+
 # Optional override for the tesseract binary path (rarely needed on Linux/Railway
 # since nixpacks.toml installs tesseract-ocr into the system PATH).
 TESSERACT_CMD = os.getenv("TESSERACT_CMD", "")
