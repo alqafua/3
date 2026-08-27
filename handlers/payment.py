@@ -12,6 +12,7 @@ import config
 import database
 from handlers.plans import create_invite_link
 from keyboards import admin_review_keyboard
+from notifications import notify_sale
 from payment_verification import verify_payment_screenshot
 from texts import TEXTS
 
@@ -61,6 +62,8 @@ async def photo_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
                 invite_link=invite_link,
             )
         )
+        amount_display = f"${result.amount:.2f} ({result.network.upper()}) — تحقق تلقائي"
+        await notify_sale(context, user.id, user.username, t.get(f"plan_name_{plan}", plan), amount_display)
         return
 
     reason = "duplicate_txid" if duplicate else (result.reason if result else "verification_crashed")
@@ -107,6 +110,14 @@ async def admin_decision_callback(update: Update, context: ContextTypes.DEFAULT_
                 expires_at=expires_at.strftime("%Y-%m-%d"),
                 invite_link=invite_link,
             ),
+        )
+        amount_display = f"${config.PLAN_PRICES.get(plan, 0):g} — موافقة يدوية"
+        await notify_sale(
+            context,
+            target_user_id,
+            db_user.username if db_user else None,
+            t.get(f"plan_name_{plan}", plan),
+            amount_display,
         )
         await query.edit_message_caption(caption=f"{base_caption}\n\n✅ تم التفعيل يدويًا / Approved by admin")
         return
