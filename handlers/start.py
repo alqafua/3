@@ -35,7 +35,7 @@ async def language_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     await query.edit_message_text(
         t["welcome"],
         reply_markup=plans_keyboard(lang, show_trial),
-        parse_mode="Markdown",
+        parse_mode="HTML",
     )
 
 

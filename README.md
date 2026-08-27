@@ -1,4 +1,4 @@
-# Onward Signals Bot
+# Oonyx Ai Bot
 
 بوت تيليجرام لإدارة اشتراكات قناة إشارات تداول خاصة، مع تحقق تلقائي من الدفع عبر
 OCR والبلوكتشين (TRC20 / BEP20)، ومراجعة يدوية احتياطية عبر الأدمن لأي حالة لا
@@ -121,7 +121,7 @@ python main.py
 5. تأكد أن نوع الخدمة **Worker** (وليس Web) لأن البوت يعمل بـ polling وليس
    بخادم HTTP — ملف `Procfile` معرّف بالفعل بـ `worker: python main.py`.
 6. بعد أول نشر ناجح، تحقق من الـ Logs للتأكد من ظهور رسالة
-   `Onward Signals bot starting...` بدون أخطاء.
+   `Oonyx Ai bot starting...` بدون أخطاء.
 
 ## ملاحظات أمنية
 
