@@ -15,7 +15,7 @@ def language_keyboard() -> InlineKeyboardMarkup:
             ],
             [
                 InlineKeyboardButton(
-                    "🆘 الدعم | Support",
+                    "الدعم | Support",
                     url=f"https://t.me/{config.SUPPORT_USERNAME}",
                 )
             ],
