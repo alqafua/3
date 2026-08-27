@@ -30,9 +30,9 @@ TEXTS = {
         "payment_instructions": (
             "💰 قيمة الاشتراك: <b>${price}</b>\n\n"
             "يمكنك الدفع عبر أي من الطرق التالية (اضغط على الرقم لنسخه):\n\n"
-            "🔸 USDT (TRC20):\n<code>{trc20_wallet}</code>\n\n"
-            "🔸 USDT (BEP20):\n<code>{bsc_wallet}</code>\n\n"
-            "🔸 تحويل داخلي عبر Binance UID:\n<code>{binance_uid}</code>\n\n"
+            "🔸 USDT (TRC20):\n<pre>{trc20_wallet}</pre>\n\n"
+            "🔸 USDT (BEP20):\n<pre>{bsc_wallet}</pre>\n\n"
+            "🔸 تحويل داخلي عبر Binance UID:\n<pre>{binance_uid}</pre>\n\n"
             "بعد إتمام التحويل، أرسل لنا <b>صورة سكرين شوت</b> لإثبات الدفع مباشرة في هذه المحادثة "
             "(بدون الحاجة لكتابة أي رقم يدويًا)، وسنتحقق من عملية الدفع تلقائيًا."
         ),
@@ -90,9 +90,9 @@ TEXTS = {
         "payment_instructions": (
             "💰 Plan price: <b>${price}</b>\n\n"
             "You can pay using any of the following methods (tap a value to copy it):\n\n"
-            "🔸 USDT (TRC20):\n<code>{trc20_wallet}</code>\n\n"
-            "🔸 USDT (BEP20):\n<code>{bsc_wallet}</code>\n\n"
-            "🔸 Internal Binance transfer (UID):\n<code>{binance_uid}</code>\n\n"
+            "🔸 USDT (TRC20):\n<pre>{trc20_wallet}</pre>\n\n"
+            "🔸 USDT (BEP20):\n<pre>{bsc_wallet}</pre>\n\n"
+            "🔸 Internal Binance transfer (UID):\n<pre>{binance_uid}</pre>\n\n"
             "After completing the transfer, just send us a <b>screenshot</b> as proof of payment "
             "directly in this chat (no need to type any number manually), and we'll verify it automatically."
         ),
