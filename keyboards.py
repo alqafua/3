@@ -2,6 +2,7 @@
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
+import config
 from texts import TEXTS
 
 
@@ -11,7 +12,13 @@ def language_keyboard() -> InlineKeyboardMarkup:
             [
                 InlineKeyboardButton("🇸🇦 العربية", callback_data="lang_ar"),
                 InlineKeyboardButton("🇬🇧 English", callback_data="lang_en"),
-            ]
+            ],
+            [
+                InlineKeyboardButton(
+                    "🆘 الدعم | Support",
+                    url=f"https://t.me/{config.SUPPORT_USERNAME}",
+                )
+            ],
         ]
     )
 
