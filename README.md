@@ -128,7 +128,7 @@ python main.py
 5. تأكد أن نوع الخدمة **Worker** (وليس Web) لأن البوت يعمل بـ polling وليس
    بخادم HTTP — ملف `Procfile` معرّف بالفعل بـ `worker: python main.py`.
 6. بعد أول نشر ناجح، تحقق من الـ Logs للتأكد من ظهور رسالة
-   `Oonyx Ai bot starting...` بدون أخطاء.
+   `Oonyx Ai Bot starting...` بدون أخطاء.
 
 ## ملاحظات أمنية
 
