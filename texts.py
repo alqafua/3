@@ -29,10 +29,16 @@ TEXTS = {
         ),
         "payment_instructions": (
             "💰 قيمة الاشتراك: <b>${price}</b>\n\n"
-            "يمكنك الدفع عبر أي من الطرق التالية (اضغط على الرقم لنسخه):\n\n"
-            "🔸 USDT (TRC20):\n<pre>{trc20_wallet}</pre>\n\n"
-            "🔸 USDT (BEP20):\n<pre>{bsc_wallet}</pre>\n\n"
-            "🔸 تحويل داخلي عبر Binance UID:\n<pre>{binance_uid}</pre>\n\n"
+            "يمكنك الدفع عبر أي من الطرق التالية:\n\n"
+            "🔸 USDT (TRC20):\n<pre>{trc20_wallet}\n</pre>"
+            "📋 اضغط على العنوان أعلاه لنسخه\n\n"
+            "🔸 USDT (BEP20):\n<pre>{bsc_wallet}\n</pre>"
+            "📋 اضغط على العنوان أعلاه لنسخه\n\n"
+            "🔸 تحويل داخلي عبر Binance UID:\n<pre>{binance_uid}\n</pre>"
+            "📋 اضغط على الرقم أعلاه لنسخه\n\n"
+            "⚠️ <b>تنبيه مهم:</b> تأكد تمامًا من اختيار الشبكة الصحيحة (TRC20 أو BEP20) قبل "
+            "إرسال التحويل من محفظتك أو منصتك. إرسال الأموال عبر شبكة خاطئة قد يؤدي لخسارتها "
+            "بشكل نهائي ولا يمكن استرجاعها أبدًا.\n\n"
             "بعد إتمام التحويل، أرسل لنا <b>صورة سكرين شوت</b> لإثبات الدفع مباشرة في هذه المحادثة "
             "(بدون الحاجة لكتابة أي رقم يدويًا)، وسنتحقق من عملية الدفع تلقائيًا."
         ),
@@ -89,10 +95,16 @@ TEXTS = {
         ),
         "payment_instructions": (
             "💰 Plan price: <b>${price}</b>\n\n"
-            "You can pay using any of the following methods (tap a value to copy it):\n\n"
-            "🔸 USDT (TRC20):\n<pre>{trc20_wallet}</pre>\n\n"
-            "🔸 USDT (BEP20):\n<pre>{bsc_wallet}</pre>\n\n"
-            "🔸 Internal Binance transfer (UID):\n<pre>{binance_uid}</pre>\n\n"
+            "You can pay using any of the following methods:\n\n"
+            "🔸 USDT (TRC20):\n<pre>{trc20_wallet}\n</pre>"
+            "📋 Tap the address above to copy it\n\n"
+            "🔸 USDT (BEP20):\n<pre>{bsc_wallet}\n</pre>"
+            "📋 Tap the address above to copy it\n\n"
+            "🔸 Internal Binance transfer (UID):\n<pre>{binance_uid}\n</pre>"
+            "📋 Tap the number above to copy it\n\n"
+            "⚠️ <b>Important:</b> Make sure you select the correct network (TRC20 or BEP20) "
+            "before sending the transfer from your wallet or exchange. Sending funds on the "
+            "wrong network can result in permanent, unrecoverable loss.\n\n"
             "After completing the transfer, just send us a <b>screenshot</b> as proof of payment "
             "directly in this chat (no need to type any number manually), and we'll verify it automatically."
         ),
