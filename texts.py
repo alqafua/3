@@ -30,17 +30,18 @@ TEXTS = {
         "payment_instructions": (
             "💰 قيمة الاشتراك: <b>${price}</b>\n\n"
             "يمكنك الدفع عبر أي من الطرق التالية:\n\n"
-            "🔸 USDT (TRC20):\n<pre>{trc20_wallet}\n</pre>"
+            "🔸 USDT (TRC20):\n<pre>{trc20_wallet}\n\n</pre>"
             "📋 اضغط على العنوان أعلاه لنسخه\n\n"
-            "🔸 USDT (BEP20):\n<pre>{bsc_wallet}\n</pre>"
+            "🔸 USDT (BEP20):\n<pre>{bsc_wallet}\n\n</pre>"
             "📋 اضغط على العنوان أعلاه لنسخه\n\n"
-            "🔸 تحويل داخلي عبر Binance UID:\n<pre>{binance_uid}\n</pre>"
+            "🔸 تحويل داخلي عبر Binance UID:\n<pre>{binance_uid}\n\n</pre>"
             "📋 اضغط على الرقم أعلاه لنسخه\n\n"
             "⚠️ <b>تنبيه مهم:</b> تأكد تمامًا من اختيار الشبكة الصحيحة (TRC20 أو BEP20) قبل "
             "إرسال التحويل من محفظتك أو منصتك. إرسال الأموال عبر شبكة خاطئة قد يؤدي لخسارتها "
             "بشكل نهائي ولا يمكن استرجاعها أبدًا.\n\n"
             "بعد إتمام التحويل، أرسل لنا <b>صورة سكرين شوت</b> لإثبات الدفع مباشرة في هذه المحادثة "
-            "(بدون الحاجة لكتابة أي رقم يدويًا)، وسنتحقق من عملية الدفع تلقائيًا."
+            "(بدون الحاجة لكتابة أي رقم يدويًا)، وسنتحقق من عملية الدفع تلقائيًا.\n\n"
+            "✅ بمجرد التحقق من الدفع تلقائيًا، بنضيفك فورًا للقناة الخاصة بدون أي تدخل بشري."
         ),
         "no_pending_payment": "ℹ️ لا يوجد لديك طلب دفع بانتظار المراجعة. أرسل /start لاختيار خطة اشتراك أولاً.",
         "processing_screenshot": "⏳ جاري التحقق من إثبات الدفع تلقائيًا، الرجاء الانتظار قليلاً...",
@@ -96,17 +97,19 @@ TEXTS = {
         "payment_instructions": (
             "💰 Plan price: <b>${price}</b>\n\n"
             "You can pay using any of the following methods:\n\n"
-            "🔸 USDT (TRC20):\n<pre>{trc20_wallet}\n</pre>"
+            "🔸 USDT (TRC20):\n<pre>{trc20_wallet}\n\n</pre>"
             "📋 Tap the address above to copy it\n\n"
-            "🔸 USDT (BEP20):\n<pre>{bsc_wallet}\n</pre>"
+            "🔸 USDT (BEP20):\n<pre>{bsc_wallet}\n\n</pre>"
             "📋 Tap the address above to copy it\n\n"
-            "🔸 Internal Binance transfer (UID):\n<pre>{binance_uid}\n</pre>"
+            "🔸 Internal Binance transfer (UID):\n<pre>{binance_uid}\n\n</pre>"
             "📋 Tap the number above to copy it\n\n"
             "⚠️ <b>Important:</b> Make sure you select the correct network (TRC20 or BEP20) "
             "before sending the transfer from your wallet or exchange. Sending funds on the "
             "wrong network can result in permanent, unrecoverable loss.\n\n"
             "After completing the transfer, just send us a <b>screenshot</b> as proof of payment "
-            "directly in this chat (no need to type any number manually), and we'll verify it automatically."
+            "directly in this chat (no need to type any number manually), and we'll verify it automatically.\n\n"
+            "✅ As soon as the payment is verified automatically, you'll be added to the private "
+            "channel instantly, with no human involved."
         ),
         "no_pending_payment": "ℹ️ You don't have a pending payment request. Send /start to choose a plan first.",
         "processing_screenshot": "⏳ Verifying your payment proof automatically, please wait a moment...",
