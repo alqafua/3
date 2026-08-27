@@ -69,5 +69,5 @@ async def plan_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
             bsc_wallet=config.BSC_WALLET,
             binance_uid=config.BINANCE_UID,
         ),
-        parse_mode="Markdown",
+        parse_mode="HTML",
     )

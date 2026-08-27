@@ -9,7 +9,7 @@ TEXTS = {
     "ar": {
         "choose_language": "👋 أهلاً بك! اختر لغتك المفضلة:\nWelcome! Please choose your language:",
         "welcome": (
-            "🚀 أهلاً بك في *Onward Signals*!\n\n"
+            "🚀 أهلاً بك في <b>Oonyx Ai</b>!\n\n"
             "قناتنا الخاصة تمنحك:\n"
             "📈 إشارات تداول احترافية يومية بدقة عالية\n"
             "🎯 نقاط دخول وخروج وأهداف واضحة لكل صفقة\n"
@@ -28,12 +28,12 @@ TEXTS = {
             "🔗 رابط الانضمام للقناة (استخدام واحد فقط):\n{invite_link}"
         ),
         "payment_instructions": (
-            "💰 قيمة الاشتراك: *${price}*\n\n"
-            "يمكنك الدفع عبر أي من الطرق التالية:\n\n"
-            "🔸 USDT (TRC20):\n`{trc20_wallet}`\n\n"
-            "🔸 USDT (BEP20):\n`{bsc_wallet}`\n\n"
-            "🔸 تحويل داخلي عبر Binance UID:\n`{binance_uid}`\n\n"
-            "بعد إتمام التحويل، أرسل لنا *صورة سكرين شوت* لإثبات الدفع مباشرة في هذه المحادثة "
+            "💰 قيمة الاشتراك: <b>${price}</b>\n\n"
+            "يمكنك الدفع عبر أي من الطرق التالية (اضغط على الرقم لنسخه):\n\n"
+            "🔸 USDT (TRC20):\n<code>{trc20_wallet}</code>\n\n"
+            "🔸 USDT (BEP20):\n<code>{bsc_wallet}</code>\n\n"
+            "🔸 تحويل داخلي عبر Binance UID:\n<code>{binance_uid}</code>\n\n"
+            "بعد إتمام التحويل، أرسل لنا <b>صورة سكرين شوت</b> لإثبات الدفع مباشرة في هذه المحادثة "
             "(بدون الحاجة لكتابة أي رقم يدويًا)، وسنتحقق من عملية الدفع تلقائيًا."
         ),
         "no_pending_payment": "ℹ️ لا يوجد لديك طلب دفع بانتظار المراجعة. أرسل /start لاختيار خطة اشتراك أولاً.",
@@ -57,7 +57,7 @@ TEXTS = {
         "status_active": "✅ اشتراكك فعّال حاليًا.\n📦 الخطة: {plan}\n📅 ينتهي بتاريخ: {expires_at}",
         "status_expired": "⌛ اشتراكك منتهي. أرسل /start للتجديد.",
         "subscription_expired_notice": (
-            "⌛ انتهى اشتراكك في قناة Onward Signals وتم إزالتك من القناة الخاصة.\n"
+            "⌛ انتهى اشتراكك في قناة Oonyx Ai وتم إزالتك من القناة الخاصة.\n"
             "أرسل /start لتجديد اشتراكك والعودة فورًا."
         ),
         "generic_error": "⚠️ حدث خطأ غير متوقع، الرجاء المحاولة لاحقًا أو التواصل مع الدعم.",
@@ -69,7 +69,7 @@ TEXTS = {
     "en": {
         "choose_language": "👋 Welcome! Please choose your language:\nاختر لغتك المفضلة:",
         "welcome": (
-            "🚀 Welcome to *Onward Signals*!\n\n"
+            "🚀 Welcome to <b>Oonyx Ai</b>!\n\n"
             "Our private channel gives you:\n"
             "📈 Professional, high-accuracy daily trading signals\n"
             "🎯 Clear entry, exit and target points for every trade\n"
@@ -88,12 +88,12 @@ TEXTS = {
             "🔗 Channel invite link (single use):\n{invite_link}"
         ),
         "payment_instructions": (
-            "💰 Plan price: *${price}*\n\n"
-            "You can pay using any of the following methods:\n\n"
-            "🔸 USDT (TRC20):\n`{trc20_wallet}`\n\n"
-            "🔸 USDT (BEP20):\n`{bsc_wallet}`\n\n"
-            "🔸 Internal Binance transfer (UID):\n`{binance_uid}`\n\n"
-            "After completing the transfer, just send us a *screenshot* as proof of payment "
+            "💰 Plan price: <b>${price}</b>\n\n"
+            "You can pay using any of the following methods (tap a value to copy it):\n\n"
+            "🔸 USDT (TRC20):\n<code>{trc20_wallet}</code>\n\n"
+            "🔸 USDT (BEP20):\n<code>{bsc_wallet}</code>\n\n"
+            "🔸 Internal Binance transfer (UID):\n<code>{binance_uid}</code>\n\n"
+            "After completing the transfer, just send us a <b>screenshot</b> as proof of payment "
             "directly in this chat (no need to type any number manually), and we'll verify it automatically."
         ),
         "no_pending_payment": "ℹ️ You don't have a pending payment request. Send /start to choose a plan first.",
@@ -117,7 +117,7 @@ TEXTS = {
         "status_active": "✅ Your subscription is active.\n📦 Plan: {plan}\n📅 Expires on: {expires_at}",
         "status_expired": "⌛ Your subscription has expired. Send /start to renew.",
         "subscription_expired_notice": (
-            "⌛ Your Onward Signals subscription has expired and you've been removed from the private channel.\n"
+            "⌛ Your Oonyx Ai subscription has expired and you've been removed from the private channel.\n"
             "Send /start to renew and rejoin instantly."
         ),
         "generic_error": "⚠️ An unexpected error occurred. Please try again later or contact support.",
