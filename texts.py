@@ -29,7 +29,7 @@ TEXTS = {
         ),
         "payment_instructions": (
             "💰 قيمة الاشتراك: <b>${price}</b>\n\n"
-            "يمكنك الدفع عبر أي من الطرق التالية (اضغط زر النسخ 📋 أعلى كل مربع لنسخه):\n\n"
+            "يمكنك الدفع عبر أي من الطرق التالية (اضغط مطولاً على أي عنوان لتحديده ونسخه):\n\n"
             "🔸 USDT (TRC20):\n<pre><code class=\"language-text\">{trc20_wallet}</code></pre>\n\n"
             "🔸 USDT (BEP20):\n<pre><code class=\"language-text\">{bsc_wallet}</code></pre>\n\n"
             "🔸 تحويل داخلي عبر Binance UID:\n<pre><code class=\"language-text\">{binance_uid}</code></pre>\n\n"
@@ -93,7 +93,7 @@ TEXTS = {
         ),
         "payment_instructions": (
             "💰 Plan price: <b>${price}</b>\n\n"
-            "You can pay using any of the following methods (tap the copy 📋 button above each box):\n\n"
+            "You can pay using any of the following methods (press and hold any address to select and copy it):\n\n"
             "🔸 USDT (TRC20):\n<pre><code class=\"language-text\">{trc20_wallet}</code></pre>\n\n"
             "🔸 USDT (BEP20):\n<pre><code class=\"language-text\">{bsc_wallet}</code></pre>\n\n"
             "🔸 Internal Binance transfer (UID):\n<pre><code class=\"language-text\">{binance_uid}</code></pre>\n\n"
