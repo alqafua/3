@@ -9,7 +9,7 @@ TEXTS = {
     "ar": {
         "choose_language": "👋 أهلاً بك! اختر لغتك المفضلة:\nWelcome! Please choose your language:",
         "welcome": (
-            "🚀 أهلاً بك في <b>Oonyx Ai</b>!\n\n"
+            "🚀 أهلاً بك في <b>Oonyx Ai Bot</b>!\n\n"
             "قناتنا الخاصة تمنحك:\n"
             "📈 إشارات تداول احترافية يومية بدقة عالية\n"
             "🎯 نقاط دخول وخروج وأهداف واضحة لكل صفقة\n"
@@ -57,7 +57,7 @@ TEXTS = {
         "status_active": "✅ اشتراكك فعّال حاليًا.\n📦 الخطة: {plan}\n📅 ينتهي بتاريخ: {expires_at}",
         "status_expired": "⌛ اشتراكك منتهي. أرسل /start للتجديد.",
         "subscription_expired_notice": (
-            "⌛ انتهى اشتراكك في قناة Oonyx Ai وتم إزالتك من القناة الخاصة.\n"
+            "⌛ انتهى اشتراكك في قناة Oonyx Ai Bot وتم إزالتك من القناة الخاصة.\n"
             "أرسل /start لتجديد اشتراكك والعودة فورًا."
         ),
         "generic_error": "⚠️ حدث خطأ غير متوقع، الرجاء المحاولة لاحقًا أو التواصل مع الدعم.",
@@ -69,7 +69,7 @@ TEXTS = {
     "en": {
         "choose_language": "👋 Welcome! Please choose your language:\nاختر لغتك المفضلة:",
         "welcome": (
-            "🚀 Welcome to <b>Oonyx Ai</b>!\n\n"
+            "🚀 Welcome to <b>Oonyx Ai Bot</b>!\n\n"
             "Our private channel gives you:\n"
             "📈 Professional, high-accuracy daily trading signals\n"
             "🎯 Clear entry, exit and target points for every trade\n"
@@ -117,7 +117,7 @@ TEXTS = {
         "status_active": "✅ Your subscription is active.\n📦 Plan: {plan}\n📅 Expires on: {expires_at}",
         "status_expired": "⌛ Your subscription has expired. Send /start to renew.",
         "subscription_expired_notice": (
-            "⌛ Your Oonyx Ai subscription has expired and you've been removed from the private channel.\n"
+            "⌛ Your Oonyx Ai Bot subscription has expired and you've been removed from the private channel.\n"
             "Send /start to renew and rejoin instantly."
         ),
         "generic_error": "⚠️ An unexpected error occurred. Please try again later or contact support.",

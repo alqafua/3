@@ -44,7 +44,7 @@ def build_application() -> Application:
 def main() -> None:
     database.init_db()
     application = build_application()
-    logger.info("Oonyx Ai bot starting...")
+    logger.info("Oonyx Ai Bot starting...")
     application.run_polling(allowed_updates=["message", "callback_query"])
 
 
