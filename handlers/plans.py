@@ -74,10 +74,8 @@ async def plan_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
         ("wallet_label_bep20", config.BSC_WALLET),
         ("wallet_label_binance", config.BINANCE_UID),
     ):
-        await context.bot.send_message(
-            chat_id=chat_id,
-            text=f"{t[label_key]}\n{wallet_value}",
-        )
+        await context.bot.send_message(chat_id=chat_id, text=t[label_key])
+        await context.bot.send_message(chat_id=chat_id, text=wallet_value)
 
     await context.bot.send_message(
         chat_id=chat_id,
