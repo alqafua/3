@@ -109,10 +109,17 @@ python main.py
 
 1. أنشئ مشروع جديد على [Railway](https://railway.app) واربطه بمستودع GitHub
    `onward-signals-bot`.
-2. Railway سيكتشف `nixpacks.toml` تلقائيًا وسيثبت `tesseract-ocr` كجزء من
-   البناء (لا حاجة لأي إعداد إضافي لـ OCR).
-3. من تبويب **Variables** أضف كل المتغيرات الموجودة في `.env.example` بقيمها
-   الحقيقية.
+2. **مهم:** Railway يبني المشروع افتراضيًا بواسطة **Railpack** (وليس
+   Nixpacks)، وRailpack لا يقرأ ملف `nixpacks.toml` إطلاقًا. لتثبيت
+   `tesseract-ocr` (مطلوب لميزة OCR) أضف متغير البيئة التالي من تبويب
+   **Variables**:
+   ```
+   RAILPACK_DEPLOY_APT_PACKAGES=tesseract-ocr
+   ```
+   بدون هذا المتغير، أي محاولة OCR ستفشل بخطأ tesseract غير موجود، وكل
+   طلبات الدفع ستتحول تلقائيًا لمراجعة الأدمن اليدوية حتى لو كانت صحيحة.
+3. من نفس تبويب **Variables** أضف كل المتغيرات الموجودة في `.env.example`
+   بقيمها الحقيقية.
 4. إذا كنت تريد استخدام PostgreSQL بدل SQLite (موصى به في الإنتاج لأن
    القرص في Railway غير دائم افتراضيًا لخدمات worker):
    - أضف خدمة PostgreSQL من Railway.
