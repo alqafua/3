@@ -34,6 +34,17 @@ def plans_keyboard(lang: str, show_trial: bool) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(rows)
 
 
+def payment_method_keyboard(lang: str) -> InlineKeyboardMarkup:
+    t = TEXTS[lang]
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton(t["btn_pay_trc20"], callback_data="paymethod_trc20")],
+            [InlineKeyboardButton(t["btn_pay_bep20"], callback_data="paymethod_bep20")],
+            [InlineKeyboardButton(t["btn_pay_binance"], callback_data="paymethod_binance")],
+        ]
+    )
+
+
 def admin_review_keyboard(user_id: int) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [

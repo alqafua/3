@@ -7,7 +7,7 @@ from telegram.ext import Application, CallbackQueryHandler, CommandHandler, Mess
 import config
 import database
 from handlers.payment import admin_decision_callback, photo_handler
-from handlers.plans import plan_callback
+from handlers.plans import payment_method_callback, plan_callback
 from handlers.start import language_callback, start_command, status_command
 from scheduler import check_expired_subscriptions
 
@@ -28,6 +28,7 @@ def build_application() -> Application:
     application.add_handler(CommandHandler("status", status_command))
     application.add_handler(CallbackQueryHandler(language_callback, pattern=r"^lang_"))
     application.add_handler(CallbackQueryHandler(plan_callback, pattern=r"^plan_"))
+    application.add_handler(CallbackQueryHandler(payment_method_callback, pattern=r"^paymethod_"))
     application.add_handler(CallbackQueryHandler(admin_decision_callback, pattern=r"^admin_(approve|reject)_\d+$"))
     application.add_handler(MessageHandler(filters.PHOTO, photo_handler))
 

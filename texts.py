@@ -29,19 +29,34 @@ TEXTS = {
         ),
         "payment_intro": (
             "💰 قيمة الاشتراك: <b>${price}</b>\n\n"
-            "راح أرسل لك عناوين الدفع في رسائل منفصلة كنص عادي حتى تقدر تحدد العنوان "
-            "وتنسخه بسهولة (اضغط مطولاً على النص)."
+            "اختر طريقة الدفع المناسبة لك:"
         ),
+        "btn_pay_trc20": "🔸 USDT (TRC20)",
+        "btn_pay_bep20": "🔸 USDT (BEP20)",
+        "btn_pay_binance": "🔸 تحويل داخلي عبر Binance UID",
+        "payment_method_sent": "✅ تم إرسال بيانات الدفع أعلاه.",
         "wallet_label_trc20": "🔸 USDT (TRC20):",
         "wallet_label_bep20": "🔸 USDT (BEP20):",
         "wallet_label_binance": "🔸 تحويل داخلي عبر Binance UID:",
-        "payment_footer": (
-            "⚠️ <b>تنبيه مهم:</b> تأكد تمامًا من اختيار الشبكة الصحيحة (TRC20 أو BEP20) قبل "
-            "إرسال التحويل من محفظتك أو منصتك. إرسال الأموال عبر شبكة خاطئة قد يؤدي لخسارتها "
-            "بشكل نهائي ولا يمكن استرجاعها أبدًا.\n\n"
+        "payment_footer_trc20": (
+            "⚠️ <b>تنبيه مهم:</b> تأكد تمامًا إنك ترسل التحويل عبر شبكة <b>TRC20 (Tron)</b> فقط. "
+            "إرسال الأموال عبر شبكة خاطئة قد يؤدي لخسارتها بشكل نهائي ولا يمكن استرجاعها أبدًا.\n\n"
             "بعد إتمام التحويل، أرسل لنا <b>صورة سكرين شوت</b> لإثبات الدفع مباشرة في هذه المحادثة "
             "(بدون الحاجة لكتابة أي رقم يدويًا)، وسنتحقق من عملية الدفع تلقائيًا.\n\n"
             "✅ بمجرد التحقق من الدفع تلقائيًا، بنضيفك فورًا للقناة الخاصة بدون أي تدخل بشري."
+        ),
+        "payment_footer_bep20": (
+            "⚠️ <b>تنبيه مهم:</b> تأكد تمامًا إنك ترسل التحويل عبر شبكة <b>BEP20 (BSC)</b> فقط. "
+            "إرسال الأموال عبر شبكة خاطئة قد يؤدي لخسارتها بشكل نهائي ولا يمكن استرجاعها أبدًا.\n\n"
+            "بعد إتمام التحويل، أرسل لنا <b>صورة سكرين شوت</b> لإثبات الدفع مباشرة في هذه المحادثة "
+            "(بدون الحاجة لكتابة أي رقم يدويًا)، وسنتحقق من عملية الدفع تلقائيًا.\n\n"
+            "✅ بمجرد التحقق من الدفع تلقائيًا، بنضيفك فورًا للقناة الخاصة بدون أي تدخل بشري."
+        ),
+        "payment_footer_binance": (
+            "ℹ️ التحويل الداخلي عبر Binance UID لا يظهر على أي بلوكتشين عام، لذلك يحتاج "
+            "دائمًا مراجعة يدوية من فريقنا (وليس تفعيلاً تلقائيًا فوريًا).\n\n"
+            "بعد إتمام التحويل، أرسل لنا <b>صورة سكرين شوت</b> لإثبات الدفع مباشرة في هذه المحادثة، "
+            "وبنفعّل اشتراكك بأسرع وقت ممكن بعد المراجعة."
         ),
         "no_pending_payment": "ℹ️ لا يوجد لديك طلب دفع بانتظار المراجعة. أرسل /start لاختيار خطة اشتراك أولاً.",
         "processing_screenshot": "⏳ جاري التحقق من إثبات الدفع تلقائيًا، الرجاء الانتظار قليلاً...",
@@ -96,20 +111,39 @@ TEXTS = {
         ),
         "payment_intro": (
             "💰 Plan price: <b>${price}</b>\n\n"
-            "I'll send you the payment addresses in separate plain-text messages so you can "
-            "select and copy each one easily (press and hold the text)."
+            "Choose the payment method that suits you:"
         ),
+        "btn_pay_trc20": "🔸 USDT (TRC20)",
+        "btn_pay_bep20": "🔸 USDT (BEP20)",
+        "btn_pay_binance": "🔸 Internal Binance transfer (UID)",
+        "payment_method_sent": "✅ Payment details sent above.",
         "wallet_label_trc20": "🔸 USDT (TRC20):",
         "wallet_label_bep20": "🔸 USDT (BEP20):",
         "wallet_label_binance": "🔸 Internal Binance transfer (UID):",
-        "payment_footer": (
-            "⚠️ <b>Important:</b> Make sure you select the correct network (TRC20 or BEP20) "
-            "before sending the transfer from your wallet or exchange. Sending funds on the "
-            "wrong network can result in permanent, unrecoverable loss.\n\n"
+        "payment_footer_trc20": (
+            "⚠️ <b>Important:</b> Make sure you send the transfer on the <b>TRC20 (Tron)</b> "
+            "network only. Sending funds on the wrong network can result in permanent, "
+            "unrecoverable loss.\n\n"
             "After completing the transfer, just send us a <b>screenshot</b> as proof of payment "
             "directly in this chat (no need to type any number manually), and we'll verify it automatically.\n\n"
             "✅ As soon as the payment is verified automatically, you'll be added to the private "
             "channel instantly, with no human involved."
+        ),
+        "payment_footer_bep20": (
+            "⚠️ <b>Important:</b> Make sure you send the transfer on the <b>BEP20 (BSC)</b> "
+            "network only. Sending funds on the wrong network can result in permanent, "
+            "unrecoverable loss.\n\n"
+            "After completing the transfer, just send us a <b>screenshot</b> as proof of payment "
+            "directly in this chat (no need to type any number manually), and we'll verify it automatically.\n\n"
+            "✅ As soon as the payment is verified automatically, you'll be added to the private "
+            "channel instantly, with no human involved."
+        ),
+        "payment_footer_binance": (
+            "ℹ️ Internal Binance UID transfers never appear on any public blockchain, so they "
+            "always require manual review from our team (not instant automatic activation).\n\n"
+            "After completing the transfer, just send us a <b>screenshot</b> as proof of payment "
+            "directly in this chat, and we'll activate your subscription as soon as possible "
+            "after review."
         ),
         "no_pending_payment": "ℹ️ You don't have a pending payment request. Send /start to choose a plan first.",
         "processing_screenshot": "⏳ Verifying your payment proof automatically, please wait a moment...",

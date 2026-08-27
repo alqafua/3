@@ -8,6 +8,7 @@ from telegram.ext import ContextTypes
 
 import config
 import database
+from keyboards import payment_method_keyboard
 from texts import TEXTS
 
 logger = logging.getLogger(__name__)
@@ -17,6 +18,12 @@ PLAN_CALLBACK_MAP = {
     "plan_monthly": "monthly",
     "plan_quarterly": "quarterly",
     "plan_yearly": "yearly",
+}
+
+PAYMENT_METHODS = {
+    "trc20": ("wallet_label_trc20", "payment_footer_trc20", "TRC20_WALLET"),
+    "bep20": ("wallet_label_bep20", "payment_footer_bep20", "BSC_WALLET"),
+    "binance": ("wallet_label_binance", "payment_footer_binance", "BINANCE_UID"),
 }
 
 
@@ -65,20 +72,25 @@ async def plan_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
 
     await query.edit_message_text(
         t["payment_intro"].format(price=price),
+        reply_markup=payment_method_keyboard(lang),
         parse_mode="HTML",
     )
+
+
+async def payment_method_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    query = update.callback_query
+
+    method = query.data.split("_", 1)[1]
+    label_key, footer_key, config_attr = PAYMENT_METHODS[method]
+    wallet_value = getattr(config, config_attr)
+
+    db_user = database.get_user(query.from_user.id)
+    lang = (db_user.language if db_user else None) or "ar"
+    t = TEXTS[lang]
+
+    await query.answer(text=t["payment_method_sent"])
 
     chat_id = query.from_user.id
-    for label_key, wallet_value in (
-        ("wallet_label_trc20", config.TRC20_WALLET),
-        ("wallet_label_bep20", config.BSC_WALLET),
-        ("wallet_label_binance", config.BINANCE_UID),
-    ):
-        await context.bot.send_message(chat_id=chat_id, text=t[label_key])
-        await context.bot.send_message(chat_id=chat_id, text=wallet_value)
-
-    await context.bot.send_message(
-        chat_id=chat_id,
-        text=t["payment_footer"],
-        parse_mode="HTML",
-    )
+    await context.bot.send_message(chat_id=chat_id, text=t[label_key])
+    await context.bot.send_message(chat_id=chat_id, text=wallet_value)
+    await context.bot.send_message(chat_id=chat_id, text=t[footer_key], parse_mode="HTML")
