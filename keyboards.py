@@ -1,0 +1,38 @@
+"""Inline keyboard builders."""
+
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+
+from texts import TEXTS
+
+
+def language_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("🇸🇦 العربية", callback_data="lang_ar"),
+                InlineKeyboardButton("🇬🇧 English", callback_data="lang_en"),
+            ]
+        ]
+    )
+
+
+def plans_keyboard(lang: str, show_trial: bool) -> InlineKeyboardMarkup:
+    t = TEXTS[lang]
+    rows = []
+    if show_trial:
+        rows.append([InlineKeyboardButton(t["btn_trial"], callback_data="plan_trial")])
+    rows.append([InlineKeyboardButton(t["btn_monthly"], callback_data="plan_monthly")])
+    rows.append([InlineKeyboardButton(t["btn_quarterly"], callback_data="plan_quarterly")])
+    rows.append([InlineKeyboardButton(t["btn_yearly"], callback_data="plan_yearly")])
+    return InlineKeyboardMarkup(rows)
+
+
+def admin_review_keyboard(user_id: int) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("✅ تفعيل / Approve", callback_data=f"admin_approve_{user_id}"),
+                InlineKeyboardButton("❌ رفض / Reject", callback_data=f"admin_reject_{user_id}"),
+            ]
+        ]
+    )
