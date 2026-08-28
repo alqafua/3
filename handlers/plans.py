@@ -1,7 +1,6 @@
-"""Plan selection: trial activation and paid-plan payment instructions."""
+"""Plan selection and paid-plan payment instructions."""
 
 import logging
-from datetime import datetime, timedelta
 
 from telegram import Update
 from telegram.ext import ContextTypes
@@ -9,13 +8,12 @@ from telegram.ext import ContextTypes
 import config
 import database
 from keyboards import payment_method_keyboard
-from notifications import notify_lead, notify_sale
+from notifications import notify_lead
 from texts import TEXTS
 
 logger = logging.getLogger(__name__)
 
 PLAN_CALLBACK_MAP = {
-    "plan_trial": "trial",
     "plan_monthly": "monthly",
     "plan_quarterly": "quarterly",
     "plan_yearly": "yearly",
@@ -36,21 +34,6 @@ async def create_invite_link(context: ContextTypes.DEFAULT_TYPE) -> str:
     return invite.invite_link
 
 
-async def activate_trial(
-    context: ContextTypes.DEFAULT_TYPE, user_id: int, username: str | None, lang: str
-) -> None:
-    expires_at = datetime.utcnow() + timedelta(days=config.TRIAL_DAYS)
-    invite_link = await create_invite_link(context)
-    database.activate_subscription(user_id, "trial", expires_at, invite_link)
-
-    t = TEXTS[lang]
-    await context.bot.send_message(
-        chat_id=user_id,
-        text=t["trial_activated"].format(days=config.TRIAL_DAYS, invite_link=invite_link),
-    )
-    await notify_sale(context, user_id, username, t["plan_name_trial"], "مجاني (تجربة 7 أيام)")
-
-
 async def plan_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     query = update.callback_query
     await query.answer()
@@ -62,14 +45,6 @@ async def plan_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     db_user = database.get_user(query.from_user.id)
     lang = (db_user.language if db_user else None) or "ar"
     t = TEXTS[lang]
-
-    if plan == "trial":
-        if db_user and db_user.used_trial:
-            await query.edit_message_text(t["trial_already_used"])
-            return
-        await query.edit_message_text(t["trial_activating"])
-        await activate_trial(context, query.from_user.id, query.from_user.username, lang)
-        return
 
     database.set_pending_plan(query.from_user.id, plan)
     price = config.PLAN_PRICES[plan]
