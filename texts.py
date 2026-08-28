@@ -17,16 +17,9 @@ TEXTS = {
             "👨‍💻 دعم فني ومتابعة مباشرة من فريق متخصص\n\n"
             "اختر خطة الاشتراك المناسبة لك:"
         ),
-        "btn_trial": "🎁 تجربة مجانية 7 أيام",
         "btn_monthly": "💳 شهري - $49",
         "btn_quarterly": "💳 ربع سنوي - $120",
         "btn_yearly": "💳 سنوي - $399",
-        "trial_already_used": "⚠️ لقد استخدمت التجربة المجانية من قبل. يمكنك الاشتراك في إحدى الخطط المدفوعة.",
-        "trial_activating": "⏳ جاري تفعيل تجربتك المجانية...",
-        "trial_activated": (
-            "🎉 تم تفعيل تجربتك المجانية لمدة {days} أيام بنجاح!\n\n"
-            "🔗 رابط الانضمام للقناة (استخدام واحد فقط):\n{invite_link}"
-        ),
         "payment_intro": (
             "💰 قيمة الاشتراك: <b>${price}</b>\n\n"
             "اختر طريقة الدفع المناسبة لك:"
@@ -83,7 +76,6 @@ TEXTS = {
             "أرسل /start لتجديد اشتراكك والعودة فورًا."
         ),
         "generic_error": "⚠️ حدث خطأ غير متوقع، الرجاء المحاولة لاحقًا أو التواصل مع الدعم.",
-        "plan_name_trial": "تجربة مجانية",
         "plan_name_monthly": "شهري",
         "plan_name_quarterly": "ربع سنوي",
         "plan_name_yearly": "سنوي",
@@ -99,16 +91,9 @@ TEXTS = {
             "👨‍💻 Direct support from a dedicated team\n\n"
             "Choose the subscription plan that fits you:"
         ),
-        "btn_trial": "🎁 7-Day Free Trial",
         "btn_monthly": "💳 Monthly - $49",
         "btn_quarterly": "💳 Quarterly - $120",
         "btn_yearly": "💳 Yearly - $399",
-        "trial_already_used": "⚠️ You've already used your free trial. Please choose a paid plan.",
-        "trial_activating": "⏳ Activating your free trial...",
-        "trial_activated": (
-            "🎉 Your {days}-day free trial has been activated!\n\n"
-            "🔗 Channel invite link (single use):\n{invite_link}"
-        ),
         "payment_intro": (
             "💰 Plan price: <b>${price}</b>\n\n"
             "Choose the payment method that suits you:"
@@ -170,7 +155,6 @@ TEXTS = {
             "Send /start to renew and rejoin instantly."
         ),
         "generic_error": "⚠️ An unexpected error occurred. Please try again later or contact support.",
-        "plan_name_trial": "Free Trial",
         "plan_name_monthly": "Monthly",
         "plan_name_quarterly": "Quarterly",
         "plan_name_yearly": "Yearly",

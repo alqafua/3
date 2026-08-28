@@ -27,14 +27,12 @@ async def language_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) 
 
     lang = "ar" if query.data == "lang_ar" else "en"
     database.set_language(query.from_user.id, lang)
-    db_user = database.get_user(query.from_user.id)
 
     t = TEXTS[lang]
-    show_trial = not (db_user and db_user.used_trial)
 
     await query.edit_message_text(
         t["welcome"],
-        reply_markup=plans_keyboard(lang, show_trial),
+        reply_markup=plans_keyboard(lang),
         parse_mode="HTML",
     )
 

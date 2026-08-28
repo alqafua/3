@@ -23,7 +23,6 @@ PRICE_MONTHLY = float(os.getenv("PRICE_MONTHLY", "49"))
 PRICE_QUARTERLY = float(os.getenv("PRICE_QUARTERLY", "120"))
 PRICE_YEARLY = float(os.getenv("PRICE_YEARLY", "399"))
 
-TRIAL_DAYS = int(os.getenv("TRIAL_DAYS", "7"))
 PAYMENT_AMOUNT_TOLERANCE = float(os.getenv("PAYMENT_AMOUNT_TOLERANCE", "0.5"))
 
 PLAN_PRICES = {
@@ -33,7 +32,6 @@ PLAN_PRICES = {
 }
 
 PLAN_DURATIONS_DAYS = {
-    "trial": TRIAL_DAYS,
     "monthly": 30,
     "quarterly": 90,
     "yearly": 365,

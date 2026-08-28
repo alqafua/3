@@ -23,15 +23,15 @@ def language_keyboard() -> InlineKeyboardMarkup:
     )
 
 
-def plans_keyboard(lang: str, show_trial: bool) -> InlineKeyboardMarkup:
+def plans_keyboard(lang: str) -> InlineKeyboardMarkup:
     t = TEXTS[lang]
-    rows = []
-    if show_trial:
-        rows.append([InlineKeyboardButton(t["btn_trial"], callback_data="plan_trial")])
-    rows.append([InlineKeyboardButton(t["btn_monthly"], callback_data="plan_monthly")])
-    rows.append([InlineKeyboardButton(t["btn_quarterly"], callback_data="plan_quarterly")])
-    rows.append([InlineKeyboardButton(t["btn_yearly"], callback_data="plan_yearly")])
-    return InlineKeyboardMarkup(rows)
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton(t["btn_monthly"], callback_data="plan_monthly")],
+            [InlineKeyboardButton(t["btn_quarterly"], callback_data="plan_quarterly")],
+            [InlineKeyboardButton(t["btn_yearly"], callback_data="plan_yearly")],
+        ]
+    )
 
 
 def payment_method_keyboard(lang: str) -> InlineKeyboardMarkup:
