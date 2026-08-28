@@ -85,7 +85,7 @@ async def send_daily_report(context: ContextTypes.DEFAULT_TYPE) -> None:
     start_utc, end_utc = _local_day_bounds(report_day)
     trades = database.get_trades_between(start_utc, end_utc)
 
-    title = f"📊 تقرير صفقات يوم {report_day.strftime('%Y-%m-%d')}"
+    title = f"📅 {report_day.strftime('%Y-%m-%d')}"
     text = build_summary_text(trades, title)
     keyboard = _report_keyboard(report_day)
 
@@ -124,7 +124,7 @@ async def today_report_command(update: Update, context: ContextTypes.DEFAULT_TYP
     end_utc = datetime.utcnow()
     trades = database.get_trades_between(start_utc, end_utc)
 
-    title = f"📊 نتائج اليوم حتى الآن ({today.strftime('%Y-%m-%d')})"
+    title = f"⏱️ {today.strftime('%Y-%m-%d')}"
     text = build_summary_text(trades, title)
     await update.message.reply_text(text)
 
@@ -132,7 +132,7 @@ async def today_report_command(update: Update, context: ContextTypes.DEFAULT_TYP
 async def stats_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """/stats — all-time per-pair breakdown."""
     trades = database.get_all_closed_trades()
-    text = build_stats_by_pair_text(trades, "📊 إحصائيات الصفقات (كل الأوقات)")
+    text = build_stats_by_pair_text(trades, "📊")
     await update.message.reply_text(text)
 
 
@@ -141,5 +141,5 @@ async def stats_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     query = update.callback_query
     await query.answer()
     trades = database.get_all_closed_trades()
-    text = build_stats_by_pair_text(trades, "📊 إحصائيات الصفقات (كل الأوقات)")
+    text = build_stats_by_pair_text(trades, "📊")
     await context.bot.send_message(chat_id=query.message.chat_id, text=text)
