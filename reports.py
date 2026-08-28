@@ -22,8 +22,8 @@ def _symbol(pair: str) -> str:
 
 def _format_trade_line(trade: "ClosedTrade") -> str:
     sign = "+" if trade.is_win else "-"
-    trend = "📈" if trade.is_win else "📉"
-    return f"{_symbol(trade.pair)}: {sign}{trade.percent:.2f}% {trend}"
+    dot = "🟢" if trade.is_win else "🚫"
+    return f"{_symbol(trade.pair)} : {sign}{trade.percent:.2f}% {dot}"
 
 
 def build_summary_text(trades: list["ClosedTrade"], title: str) -> str:
