@@ -70,7 +70,7 @@ def main() -> None:
     database.init_db()
     application = build_application()
     logger.info("Oonyx Ai Bot starting...")
-    application.run_polling(allowed_updates=["message", "callback_query"])
+    application.run_polling(allowed_updates=["message", "channel_post", "callback_query"])
 
 
 if __name__ == "__main__":
