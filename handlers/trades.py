@@ -53,7 +53,7 @@ async def group_message_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
     if parsed.is_win and config.PUBLIC_CHANNEL_ID:
         try:
-            await context.bot.copy_message(
+            await context.bot.forward_message(
                 chat_id=config.PUBLIC_CHANNEL_ID,
                 from_chat_id=message.chat_id,
                 message_id=message.message_id,
