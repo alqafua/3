@@ -30,6 +30,7 @@ def plans_keyboard(lang: str) -> InlineKeyboardMarkup:
             [InlineKeyboardButton(t["btn_monthly"], callback_data="plan_monthly")],
             [InlineKeyboardButton(t["btn_quarterly"], callback_data="plan_quarterly")],
             [InlineKeyboardButton(t["btn_yearly"], callback_data="plan_yearly")],
+            [InlineKeyboardButton(t["btn_statistics"], callback_data="show_stats")],
         ]
     )
 

@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Optional
 
-from sqlalchemy import BigInteger, Boolean, Column, DateTime, String, create_engine
+from sqlalchemy import BigInteger, Boolean, Column, Date, DateTime, Float, Integer, String, Text, create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 from config import DATABASE_URL
@@ -36,6 +36,30 @@ class UsedTransaction(Base):
     network = Column(String(16), nullable=False)
     used_by = Column(BigInteger, nullable=False)
     used_at = Column(DateTime, nullable=False, default=datetime.utcnow)
+
+
+class ClosedTrade(Base):
+    __tablename__ = "closed_trades"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    pair = Column(String(32), nullable=False)
+    is_win = Column(Boolean, nullable=False)
+    percent = Column(Float, nullable=False)
+    duration_text = Column(String(64), nullable=True)
+    raw_message = Column(Text, nullable=True)
+    closed_at = Column(DateTime, nullable=False, default=datetime.utcnow)
+
+
+class DailyReport(Base):
+    """Tracks the pinned daily-report message per local day, so each new
+    report can link back to the previous day's."""
+
+    __tablename__ = "daily_reports"
+
+    report_date = Column(Date, primary_key=True)
+    chat_id = Column(BigInteger, nullable=False)
+    message_id = Column(BigInteger, nullable=False)
+    created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
 
 def init_db() -> None:
@@ -136,3 +160,63 @@ def mark_txid_used(txid: str, network: str, used_by: int) -> None:
             return
         session.add(UsedTransaction(txid=txid, network=network, used_by=used_by))
         session.commit()
+
+
+def add_closed_trade(
+    pair: str,
+    is_win: bool,
+    percent: float,
+    duration_text: Optional[str],
+    raw_message: Optional[str],
+) -> ClosedTrade:
+    with SessionLocal() as session:
+        trade = ClosedTrade(
+            pair=pair,
+            is_win=is_win,
+            percent=percent,
+            duration_text=duration_text,
+            raw_message=raw_message,
+        )
+        session.add(trade)
+        session.commit()
+        session.refresh(trade)
+        session.expunge(trade)
+        return trade
+
+
+def get_trades_between(start: datetime, end: datetime) -> list[ClosedTrade]:
+    with SessionLocal() as session:
+        trades = (
+            session.query(ClosedTrade)
+            .filter(ClosedTrade.closed_at >= start, ClosedTrade.closed_at < end)
+            .order_by(ClosedTrade.closed_at.asc())
+            .all()
+        )
+        session.expunge_all()
+        return trades
+
+
+def get_all_closed_trades() -> list[ClosedTrade]:
+    with SessionLocal() as session:
+        trades = session.query(ClosedTrade).order_by(ClosedTrade.closed_at.asc()).all()
+        session.expunge_all()
+        return trades
+
+
+def save_daily_report(report_date: date, chat_id: int, message_id: int) -> None:
+    with SessionLocal() as session:
+        report = session.get(DailyReport, report_date)
+        if report is None:
+            session.add(DailyReport(report_date=report_date, chat_id=chat_id, message_id=message_id))
+        else:
+            report.chat_id = chat_id
+            report.message_id = message_id
+        session.commit()
+
+
+def get_daily_report(report_date: date) -> Optional[DailyReport]:
+    with SessionLocal() as session:
+        report = session.get(DailyReport, report_date)
+        if report:
+            session.expunge(report)
+        return report

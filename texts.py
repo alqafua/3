@@ -79,6 +79,7 @@ TEXTS = {
         "plan_name_monthly": "شهري",
         "plan_name_quarterly": "ربع سنوي",
         "plan_name_yearly": "سنوي",
+        "btn_statistics": "📊 الإحصائيات",
     },
     "en": {
         "choose_language": "👋 Welcome! Please choose your language:\nاختر لغتك المفضلة:",
@@ -158,5 +159,6 @@ TEXTS = {
         "plan_name_monthly": "Monthly",
         "plan_name_quarterly": "Quarterly",
         "plan_name_yearly": "Yearly",
+        "btn_statistics": "📊 Statistics",
     },
 }

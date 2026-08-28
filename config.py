@@ -10,6 +10,18 @@ BOT_TOKEN = os.getenv("BOT_TOKEN", "")
 ADMIN_CHAT_ID = int(os.getenv("ADMIN_CHAT_ID", "0") or "0")
 VIP_CHANNEL_ID = int(os.getenv("VIP_CHANNEL_ID", "0") or "0")
 
+# Private group/channel where the signals team posts closed-trade results
+# (wins and losses). Defaults to the VIP channel itself; override with a
+# dedicated TRADES_GROUP_ID env var if closes are posted somewhere else.
+TRADES_GROUP_ID = int(os.getenv("TRADES_GROUP_ID", str(VIP_CHANNEL_ID)) or "0")
+
+# Public channel that receives the daily report and the auto-forwarded
+# winning closes.
+PUBLIC_CHANNEL_ID = int(os.getenv("PUBLIC_CHANNEL_ID", "-1004455607894") or "0")
+
+# IANA timezone used to compute "today"/midnight for the daily report and /t.
+REPORT_TIMEZONE = os.getenv("REPORT_TIMEZONE", "Asia/Riyadh")
+
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///onward_signals.db")
 
 TRC20_WALLET = os.getenv("TRC20_WALLET", "")
