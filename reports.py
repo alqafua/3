@@ -34,18 +34,16 @@ def _build_report(trades: list["ClosedTrade"], title: str) -> str:
     total = len(trades)
     win_rate = (len(wins) / total) * 100
     net_total = sum(t.percent if t.is_win else -t.percent for t in trades)
-    avg_per_trade = net_total / total
 
     lines = [title, ""]
     lines.extend(_format_trade_line(t) for t in trades)
     lines.append("")
     lines.append(SEPARATOR)
-    lines.append(f"الربح الكلي 💰: {net_total:.2f}%")
-    lines.append(f"متوسط الربح/كل صفقة 💹: {avg_per_trade:.2f}%")
-    lines.append(f"عدد الإشارات 📡: {total} إشارة")
-    lines.append(f"نسبة النجاح 📊: {win_rate:.1f}%")
-    lines.append(f"عدد الصفقات الناجحة 🟢: {len(wins)}")
-    lines.append(f"عدد الصفقات الفاشلة 🚫: {len(losses)}")
+    lines.append(f"💰 Total: {net_total:.2f}%")
+    lines.append(f"📡 Total Signals: {total}")
+    lines.append(f"🟢 Profit: {len(wins)}")
+    lines.append(f"🚫 Loss: {len(losses)}")
+    lines.append(f"📊 Percent: {win_rate:.1f}%")
 
     return "\n".join(lines)
 
