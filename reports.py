@@ -1,9 +1,9 @@
 """Builds the plain-text summaries used by the daily report, /t and the
 Statistics button.
 
-Kept language-neutral on purpose: emojis carry the meaning, and any label
-that still needs text is written in both Arabic and English side by side
-(this business runs a bilingual AR/EN channel and bot)."""
+Matches the reference channel's own report style: a flat list of trades
+("SYMBOL : ±percent%", no icons) followed by an aggregate stats box. Kept
+bilingual (AR/EN) since this business runs a bilingual channel and bot."""
 
 from __future__ import annotations
 
@@ -25,57 +25,36 @@ def _format_trade_line(trade: "ClosedTrade") -> str:
     return f"{_symbol(trade.pair)} : {sign}{trade.percent:.2f}%"
 
 
-def build_summary_text(trades: list["ClosedTrade"], title: str) -> str:
-    """A chronological list of trades for a single period (daily report / /t)."""
+def _build_report(trades: list["ClosedTrade"], title: str) -> str:
     if not trades:
         return f"{title}\n\n🚫 لا صفقات / No trades"
 
     wins = [t for t in trades if t.is_win]
     losses = [t for t in trades if not t.is_win]
-    win_rate = (len(wins) / len(trades)) * 100
+    total = len(trades)
+    win_rate = (len(wins) / total) * 100
+    net_total = sum(t.percent if t.is_win else -t.percent for t in trades)
+    avg_per_trade = net_total / total
 
     lines = [title, ""]
     lines.extend(_format_trade_line(t) for t in trades)
     lines.append("")
     lines.append(SEPARATOR)
-    lines.append(f"🔢 الصفقات / Trades: {len(trades)}")
-    lines.append(f"✅ رابحة / Wins: {len(wins)}")
-    lines.append(f"🚫 خاسرة / Losses: {len(losses)}")
-    lines.append(f"🎯 النجاح / Win rate: {win_rate:.1f}%")
+    lines.append(f"💰 الربح الكلي / Total profit: {net_total:.2f}%")
+    lines.append(f"📈 متوسط الربح لكل صفقة / Avg per trade: {avg_per_trade:.2f}%")
+    lines.append(f"📡 عدد الإشارات / Signals: {total}")
+    lines.append(f"🎯 نسبة النجاح / Win rate: {win_rate:.1f}%")
+    lines.append(f"✅ الصفقات الناجحة / Wins: {len(wins)}")
+    lines.append(f"🚫 الصفقات الفاشلة / Losses: {len(losses)}")
 
     return "\n".join(lines)
+
+
+def build_summary_text(trades: list["ClosedTrade"], title: str) -> str:
+    """Daily report / /t: chronological list of trades for a single period."""
+    return _build_report(trades, title)
 
 
 def build_stats_by_pair_text(trades: list["ClosedTrade"], title: str) -> str:
-    """Per-coin breakdown used by the Statistics button (all-time)."""
-    if not trades:
-        return f"{title}\n\n🚫 لا صفقات / No trades"
-
-    by_symbol: dict[str, list["ClosedTrade"]] = {}
-    for trade in trades:
-        by_symbol.setdefault(_symbol(trade.pair), []).append(trade)
-
-    lines = [title, ""]
-    for symbol, symbol_trades in sorted(by_symbol.items()):
-        wins = [t for t in symbol_trades if t.is_win]
-        losses = [t for t in symbol_trades if not t.is_win]
-        net = sum(t.percent if t.is_win else -t.percent for t in symbol_trades)
-        win_rate = (len(wins) / len(symbol_trades)) * 100
-        sign = "+" if net >= 0 else ""
-        lines.append(
-            f"🔸 {symbol} {sign}{net:.2f}% | 🔢{len(symbol_trades)} ✅{len(wins)} 🚫{len(losses)} 🎯{win_rate:.1f}%"
-        )
-
-    total = len(trades)
-    total_wins = sum(1 for t in trades if t.is_win)
-    total_losses = total - total_wins
-    total_win_rate = (total_wins / total) * 100
-
-    lines.append("")
-    lines.append(SEPARATOR)
-    lines.append(f"🔢 الإجمالي / Total: {total}")
-    lines.append(f"✅ رابحة / Wins: {total_wins}")
-    lines.append(f"🚫 خاسرة / Losses: {total_losses}")
-    lines.append(f"🎯 النجاح / Win rate: {total_win_rate:.1f}%")
-
-    return "\n".join(lines)
+    """Statistics button / /stats: all-time list of trades."""
+    return _build_report(trades, title)
