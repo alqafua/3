@@ -85,7 +85,7 @@ async def send_daily_report(context: ContextTypes.DEFAULT_TYPE) -> None:
     start_utc, end_utc = _local_day_bounds(report_day)
     trades = database.get_trades_between(start_utc, end_utc)
 
-    title = f"📅 {report_day.strftime('%Y-%m-%d')}"
+    title = f"📅 Date: {report_day.strftime('%Y-%m-%d')}"
     text = build_summary_text(trades, title)
     keyboard = _report_keyboard(report_day)
 
@@ -118,13 +118,14 @@ async def send_daily_report(context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 async def today_report_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """/t — snapshot of today's results so far, sent back to the caller."""
-    today = datetime.now(TZ).date()
+    """/t — snapshot of today's results so far (start of day up to now), sent back to the caller."""
+    now_local = datetime.now(TZ)
+    today = now_local.date()
     start_utc, _ = _local_day_bounds(today)
     end_utc = datetime.utcnow()
     trades = database.get_trades_between(start_utc, end_utc)
 
-    title = f"⏱️ {today.strftime('%Y-%m-%d')}"
+    title = f"📅 Date: {today.strftime('%Y-%m-%d')} ⏱️ As of {now_local.strftime('%H:%M')}"
     text = build_summary_text(trades, title)
     await update.message.reply_text(text)
 
